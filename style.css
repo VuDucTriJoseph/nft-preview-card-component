@@ -1,6 +1,7 @@
 :root {
   --color-primary: #8bacda;
   --color-secondary: #00fff7;
+  --color-secondary-opacity: #00fff780;
   --color-neutral: #14253d;
   --color-neutral-dark: #0d192b;
   --color-neutral-light: #2f415b;
@@ -46,12 +47,37 @@ body {
   align-items: center;
 }
 
-.card__image {
+.image {
   grid-column: 1/-1;
+  position: relative;
+  cursor: pointer;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.card__image {
   width: 100%;
+}
+
+.overlay_img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-secondary-opacity);
+  z-index: 1000;
+  transition: all 0.5s;
+  transform: scale(0%);
   border-radius: 1rem;
 }
 
+.image:hover > .overlay_img {
+  transform: scale(100%);
+}
 .name {
   grid-column: 1/-1;
   font-size: 2.2rem;
